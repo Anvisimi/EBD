@@ -13,9 +13,10 @@ services:
       - "8040:8040" # BE HTTP port
       - "9050:9050" # BE HeartBeat port
     volumes:
-      - ./data/starrocks-data:/data/user_data
+      - ./starrocks/fe/meta:/data/deploy/starrocks/fe/meta
+      - ./starrocks/be/storage:/data/deploy/starrocks/be/storage
     environment:
-      - FE_CONF=enable_external_catalog=true
+      - FE_CONF=enable_external_catalog=true;persistent_index.enable=true
     networks:
       - kafka-nifi-net
 
@@ -29,12 +30,14 @@ services:
       - SPARK_RPC_ENCRYPTION_ENABLED=no
       - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
       - SPARK_SSL_ENABLED=no
+      - SPARK_EXTRA_CLASSPATH=/extra-jars
     ports:
       - "8090:8080"
       - "7077:7077"
     volumes:
       - ./data:/data
       - ./scripts:/scripts
+      - ./jars:/extra-jars
     networks:
       - kafka-nifi-net
 
@@ -53,9 +56,11 @@ services:
       - SPARK_RPC_ENCRYPTION_ENABLED=no
       - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
       - SPARK_SSL_ENABLED=no
+      - SPARK_EXTRA_CLASSPATH=/extra-jars
     volumes:
       - ./data:/data
       - ./scripts:/scripts
+      - ./jars:/extra-jars
     networks:
       - kafka-nifi-net
 
