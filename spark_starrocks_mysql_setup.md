@@ -131,3 +131,4 @@ The top 10 rows will be printed from your `read_from_starrocks.py` job if setup 
 - Use `--jars` explicitly even if `SPARK_EXTRA_CLASSPATH` is configured.
 - Confirm JARs exist via `docker exec -it spark-master ls /extra-jars`.
 - To prevent MySQL data loss, avoid `docker-compose down -v`. Use `docker-compose stop` or `restart` instead.
+- we use industrial-data-pipeline/starrocks/ for starrocks data persistence
