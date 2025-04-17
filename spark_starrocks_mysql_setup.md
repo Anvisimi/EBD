@@ -133,13 +133,19 @@ The top 10 rows will be printed from your `read_from_starrocks.py` job if setup 
 - To prevent MySQL data loss, avoid `docker-compose down -v`. Use `docker-compose stop` or `restart` instead.
 - we use industrial-data-pipeline/starrocks/ for starrocks data persistence
 
+## Create a topic
+
+docker exec -it kafka kafka-topics --create \
+--topic mes-data \
+--bootstrap-server kafka:9092 \
+--partitions 1 \
+--replication-factor 1
+
 ## writing to kafka topic 
 
-docker exec -it kafka kafka-console-consumer \
---bootstrap-server kafka:9092 \
---topic mes-data \
---from-beginning \
---timeout-ms 10000
+docker exec -it kafka kafka-console-producer \
+--broker-list kafka:9092 \
+--topic mes-data
 
 # reading from kafka topic
 
@@ -147,4 +153,3 @@ docker exec -it kafka kafka-console-consumer \
 --bootstrap-server kafka:9092 \
 --topic mes-data \
 --from-beginning \
---timeout-ms 10000
