@@ -100,4 +100,5 @@ volumes:
 
 networks:
   kafka-nifi-net:
-    driver: bridge 
+    external: true
+    name: industrial-data-pipeline_kafka-nifi-net
