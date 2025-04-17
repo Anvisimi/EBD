@@ -132,3 +132,19 @@ The top 10 rows will be printed from your `read_from_starrocks.py` job if setup 
 - Confirm JARs exist via `docker exec -it spark-master ls /extra-jars`.
 - To prevent MySQL data loss, avoid `docker-compose down -v`. Use `docker-compose stop` or `restart` instead.
 - we use industrial-data-pipeline/starrocks/ for starrocks data persistence
+
+## writing to kafka topic 
+
+docker exec -it kafka kafka-console-consumer \
+--bootstrap-server kafka:9092 \
+--topic mes-data \
+--from-beginning \
+--timeout-ms 10000
+
+# reading from kafka topic
+
+docker exec -it kafka kafka-console-consumer \
+--bootstrap-server kafka:9092 \
+--topic mes-data \
+--from-beginning \
+--timeout-ms 10000
