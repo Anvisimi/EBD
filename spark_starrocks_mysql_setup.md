@@ -152,4 +152,4 @@ docker exec -it kafka kafka-console-producer \
 docker exec -it kafka kafka-console-consumer \
 --bootstrap-server kafka:9092 \
 --topic mes-data \
---from-beginning \
+--from-beginning
