@@ -15,6 +15,7 @@ services:
     volumes:
       - ./starrocks/fe/meta:/data/deploy/starrocks/fe/meta
       - ./starrocks/be/storage:/data/deploy/starrocks/be/storage
+      - ./jars/mysql-connector-j-8.0.33.jar:/data/deploy/starrocks/fe/lib/mysql-connector-j-8.0.33.jar
     environment:
       - FE_CONF=enable_external_catalog=true;persistent_index.enable=true
     networks:
