@@ -15,7 +15,6 @@ services:
     volumes:
       - ./starrocks/fe/meta:/data/deploy/starrocks/fe/meta
       - ./starrocks/be/storage:/data/deploy/starrocks/be/storage
-      - ./jars/mysql-connector-j-8.0.33.jar:/data/deploy/starrocks/fe/lib/mysql-connector-j-8.0.33.jar
     environment:
       - FE_CONF=enable_external_catalog=true;persistent_index.enable=true
     networks:
@@ -95,6 +94,27 @@ services:
       - PYSPARK_DRIVER_PYTHON_OPTS="notebook --NotebookApp.token='' --ip='*' --no-browser"
     networks:
       - kafka-nifi-net
+   # OPC UA Server service
+  opcua-server:
+    build: ./opcua-server
+    container_name: opcua-server
+    ports:
+      - "4840:4840"
+    volumes:
+      - ./opcua-server/sensor_data.csv:/app/sensor_data.csv:ro
+      - ./opcua-server/future-stream-scada.csv:/app/future-stream-scada.csv:ro
+    networks:
+      - kafka-nifi-net
+  nodered:
+    image: nodered/node-red:latest       # Official Node-RED image on Docker Hub
+    restart: unless-stopped              # Always restart unless explicitly stopped
+    ports:
+      - "1880:1880"                     # Map host port 1880 to container port 1880
+    volumes:
+      - ./.node-red:/data  # Bind mount your local flows & settings
+    networks:
+      - kafka-nifi-net
+
 
 volumes:
   starrocks_data:

@@ -1,0 +1,557 @@
+[
+    {
+        "id": "93400bd14b516e75",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e3d50efca43a2dd5",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://Yatharths-MacBook-Pro.local:53530/OPCUA/SimulationServer",
+        "secpol": "None",
+        "secmode": "None",
+        "none": true,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "d693c2a0e82f92d2",
+        "type": "OpcUa-Endpoint2",
+        "name": "",
+        "endpoint": "opc.tcp://opcua-server:4840/freeopcua/server",
+        "securityMode": "None",
+        "securityPolicy": "None",
+        "userIdentityType": "Anonymous",
+        "pkiName": "",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "subscriptions": [
+            {
+                "id": "s0",
+                "name": "Default Subscription",
+                "isDefault": true,
+                "parameters": {
+                    "publishingEnabled": true,
+                    "requestedLifetimeCount": "1000",
+                    "requestedMaxKeepAliveCount": "10",
+                    "requestedPublishingInterval": "1000",
+                    "maxNotificationsPerPublish": "0",
+                    "priority": "100"
+                }
+            },
+            {
+                "id": "s1",
+                "name": "Slow Subscription",
+                "isDefault": true,
+                "parameters": {
+                    "publishingEnabled": true,
+                    "requestedLifetimeCount": "100",
+                    "requestedMaxKeepAliveCount": "3",
+                    "requestedPublishingInterval": "5000",
+                    "maxNotificationsPerPublish": "100",
+                    "priority": "10"
+                }
+            },
+            {
+                "id": "s2",
+                "name": "Fast Subscription",
+                "isDefault": true,
+                "parameters": {
+                    "publishingEnabled": true,
+                    "requestedLifetimeCount": "4000",
+                    "requestedMaxKeepAliveCount": "50",
+                    "requestedPublishingInterval": "250",
+                    "maxNotificationsPerPublish": "100",
+                    "priority": "200"
+                }
+            }
+        ],
+        "namespaceAliases": [
+            {
+                "namespaceUri": "http://opcfoundation.org/UA/",
+                "alias": "ua"
+            },
+            {
+                "namespaceUri": "http://opcfoundation.org/DI/",
+                "alias": "di"
+            }
+        ]
+    },
+    {
+        "id": "499352e8dbca9c6c",
+        "type": "OpcUa-Endpoint2",
+        "name": "",
+        "endpoint": "opc.tcp://Yatharths-MacBook-Pro.local:53530/OPCUA/SimulationServer",
+        "securityMode": "None",
+        "securityPolicy": "None",
+        "userIdentityType": "Anonymous",
+        "pkiName": "",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "subscriptions": [
+            {
+                "id": "s0",
+                "name": "Default Subscription",
+                "isDefault": true,
+                "parameters": {
+                    "publishingEnabled": true,
+                    "requestedLifetimeCount": "1000",
+                    "requestedMaxKeepAliveCount": "10",
+                    "requestedPublishingInterval": "1000",
+                    "maxNotificationsPerPublish": "0",
+                    "priority": "100"
+                }
+            },
+            {
+                "id": "s1",
+                "name": "Slow Subscription",
+                "isDefault": true,
+                "parameters": {
+                    "publishingEnabled": true,
+                    "requestedLifetimeCount": "100",
+                    "requestedMaxKeepAliveCount": "3",
+                    "requestedPublishingInterval": "5000",
+                    "maxNotificationsPerPublish": "100",
+                    "priority": "10"
+                }
+            },
+            {
+                "id": "s2",
+                "name": "Fast Subscription",
+                "isDefault": true,
+                "parameters": {
+                    "publishingEnabled": true,
+                    "requestedLifetimeCount": "4000",
+                    "requestedMaxKeepAliveCount": "50",
+                    "requestedPublishingInterval": "250",
+                    "maxNotificationsPerPublish": "100",
+                    "priority": "200"
+                }
+            }
+        ],
+        "namespaceAliases": [
+            {
+                "namespaceUri": "http://opcfoundation.org/UA/",
+                "alias": "ua"
+            },
+            {
+                "namespaceUri": "http://opcfoundation.org/DI/",
+                "alias": "di"
+            }
+        ]
+    },
+    {
+        "id": "c49fae38971038cb",
+        "type": "OpcUa-Endpoint2",
+        "name": "",
+        "endpoint": "opc.tcp://opcua-server:4840/freeopcua/server",
+        "securityMode": "None",
+        "securityPolicy": "None",
+        "userIdentityType": "Anonymous",
+        "pkiName": "",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "subscriptions": [
+            {
+                "id": "s0",
+                "name": "Default Subscription",
+                "isDefault": true,
+                "parameters": {
+                    "publishingEnabled": true,
+                    "requestedLifetimeCount": "1000",
+                    "requestedMaxKeepAliveCount": "10",
+                    "requestedPublishingInterval": "1000",
+                    "maxNotificationsPerPublish": "0",
+                    "priority": "100"
+                }
+            },
+            {
+                "id": "s1",
+                "name": "Slow Subscription",
+                "isDefault": true,
+                "parameters": {
+                    "publishingEnabled": true,
+                    "requestedLifetimeCount": "100",
+                    "requestedMaxKeepAliveCount": "3",
+                    "requestedPublishingInterval": "5000",
+                    "maxNotificationsPerPublish": "100",
+                    "priority": "10"
+                }
+            },
+            {
+                "id": "s2",
+                "name": "Fast Subscription",
+                "isDefault": true,
+                "parameters": {
+                    "publishingEnabled": true,
+                    "requestedLifetimeCount": "4000",
+                    "requestedMaxKeepAliveCount": "50",
+                    "requestedPublishingInterval": "250",
+                    "maxNotificationsPerPublish": "100",
+                    "priority": "200"
+                }
+            }
+        ],
+        "namespaceAliases": [
+            {
+                "namespaceUri": "http://opcfoundation.org/UA/",
+                "alias": "ua"
+            },
+            {
+                "namespaceUri": "http://opcfoundation.org/DI/",
+                "alias": "di"
+            }
+        ]
+    },
+    {
+        "id": "40e03b9ecf4da392",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "",
+        "secpol": "None",
+        "secmode": "None",
+        "none": true,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "d3c31bb7c05d1ae8",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://localhost:4840/freeopcua/server",
+        "secpol": "None",
+        "secmode": "None",
+        "none": true,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "e8263fd652f77f1d",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://localhost:4840/freeopcua/server",
+        "secpol": "None",
+        "secmode": "None",
+        "none": true,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "41404126a26b99f7",
+        "type": "hm-kafka-broker",
+        "name": "",
+        "hosts": "0.0.0.0:9092",
+        "usesasl": false,
+        "username": "",
+        "password": "",
+        "usetls": false,
+        "cacert": "",
+        "clientcert": "",
+        "privatekey": "",
+        "passphrase": "",
+        "selfsign": false
+    },
+    {
+        "id": "341b4741d50ebcf4",
+        "type": "kafkajs-client",
+        "name": "local broker",
+        "brokers": "kafka:9092",
+        "clientid": "123",
+        "connectiontimeout": 3000,
+        "requesttimeout": 25000,
+        "advancedretry": false,
+        "maxretrytime": 30000,
+        "initialretrytime": 300,
+        "factor": 0.2,
+        "multiplier": 2,
+        "retries": 5,
+        "auth": "none",
+        "tlsselfsign": false,
+        "tlscacert": "",
+        "tlsclientcert": "",
+        "tlsprivatekey": "",
+        "tlspassphrase": "",
+        "saslssl": true,
+        "saslmechanism": "plain",
+        "loglevel": "error"
+    },
+    {
+        "id": "0cf7b91011c8a583",
+        "type": "OpcUa-Client2-Explore",
+        "z": "93400bd14b516e75",
+        "inputs": 1,
+        "output": 4,
+        "name": "READ SCADA OPCUA NODE",
+        "endpoint": "d693c2a0e82f92d2",
+        "nodeId": "ns=2;i=3",
+        "outputType": "DataValue",
+        "excludeEmpty": false,
+        "followOrganizes": false,
+        "x": 440,
+        "y": 680,
+        "wires": [
+            [
+                "bf7f46b46b67862e",
+                "c167344c71f82541"
+            ]
+        ]
+    },
+    {
+        "id": "f80603f4d890f8d4",
+        "type": "inject",
+        "z": "93400bd14b516e75",
+        "name": "SCHEDULER FOR SCADA STREAMS",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 760,
+        "wires": [
+            [
+                "0cf7b91011c8a583"
+            ]
+        ]
+    },
+    {
+        "id": "bf7f46b46b67862e",
+        "type": "debug",
+        "z": "93400bd14b516e75",
+        "name": "DEBUG OPCUA INGESTION SCADA",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 810,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "c167344c71f82541",
+        "type": "json",
+        "z": "93400bd14b516e75",
+        "name": "JSON TRANSFORMATION SCADA DATA",
+        "property": "payload",
+        "action": "str",
+        "pretty": true,
+        "x": 680,
+        "y": 800,
+        "wires": [
+            [
+                "4acd113ffd6f8b95",
+                "e150469f8cc40d24"
+            ]
+        ]
+    },
+    {
+        "id": "4acd113ffd6f8b95",
+        "type": "debug",
+        "z": "93400bd14b516e75",
+        "name": "DEBUG JSON TRANSFORMATION SCADA",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "e150469f8cc40d24",
+        "type": "kafkajs-producer",
+        "z": "93400bd14b516e75",
+        "name": "PUBLISH SCADA DATA TO KAFKA",
+        "client": "341b4741d50ebcf4",
+        "topic": "scada-data",
+        "advancedoptions": false,
+        "acknowledge": "all",
+        "partition": "",
+        "headeritems": {},
+        "key": "",
+        "responsetimeout": 30000,
+        "transactiontimeout": 60000,
+        "metadatamaxage": 300000,
+        "allowautotopiccreation": false,
+        "x": 820,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "3fa194209cc34919",
+        "type": "OpcUa-Client2-Explore",
+        "z": "93400bd14b516e75",
+        "inputs": 1,
+        "output": 4,
+        "name": "READ IOT SENSOR OPCUA NODE",
+        "endpoint": "d693c2a0e82f92d2",
+        "nodeId": "ns=2;i=1",
+        "outputType": "DataValue",
+        "excludeEmpty": false,
+        "followOrganizes": false,
+        "x": 400,
+        "y": 360,
+        "wires": [
+            [
+                "815e58bc9c17add2",
+                "2ea65c4a438f500d"
+            ]
+        ]
+    },
+    {
+        "id": "c2503f2e9493d151",
+        "type": "inject",
+        "z": "93400bd14b516e75",
+        "name": "SCHEDULER FOR IOT STREAMS",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 440,
+        "wires": [
+            [
+                "3fa194209cc34919"
+            ]
+        ]
+    },
+    {
+        "id": "815e58bc9c17add2",
+        "type": "debug",
+        "z": "93400bd14b516e75",
+        "name": "DEBUG OPCUA INGESTION IOT",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 860,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "2ea65c4a438f500d",
+        "type": "json",
+        "z": "93400bd14b516e75",
+        "name": "JSON TRANSFORMATION IOT DATA",
+        "property": "payload",
+        "action": "str",
+        "pretty": true,
+        "x": 610,
+        "y": 480,
+        "wires": [
+            [
+                "988dac03e700bdee",
+                "5c8be20977ed9029"
+            ]
+        ]
+    },
+    {
+        "id": "988dac03e700bdee",
+        "type": "debug",
+        "z": "93400bd14b516e75",
+        "name": "DEBUG JSON TRANSFORMATION IOT",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "5c8be20977ed9029",
+        "type": "kafkajs-producer",
+        "z": "93400bd14b516e75",
+        "name": "PUBLISH IOT DATA TO KAFKA",
+        "client": "341b4741d50ebcf4",
+        "topic": "iot-data",
+        "advancedoptions": false,
+        "acknowledge": "all",
+        "partition": "",
+        "headeritems": {},
+        "key": "",
+        "responsetimeout": 30000,
+        "transactiontimeout": 60000,
+        "metadatamaxage": 300000,
+        "allowautotopiccreation": false,
+        "x": 870,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "082b0b3a09824b29",
+        "type": "comment",
+        "z": "93400bd14b516e75",
+        "name": "IOT STREAM",
+        "info": "",
+        "x": 90,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "2a8777c2643c94eb",
+        "type": "comment",
+        "z": "93400bd14b516e75",
+        "name": "SCADA STREAM",
+        "info": "",
+        "x": 100,
+        "y": 600,
+        "wires": []
+    }
+]
