@@ -1,0 +1,13 @@
+{
+    "name": "node-red-project",
+    "description": "A Node-RED Project",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "@edgeflow/kafka-client": "~1.0.3",
+        "@opcua/for-node-red": "~3.9.0",
+        "node-red-contrib-kafkajs": "~0.0.7",
+        "node-red-contrib-opcua": "~0.2.339",
+        "node-red-contrib-opcua-server": "~1.1.1"
+    }
+}
