@@ -100,9 +100,23 @@ services:
     networks:
       - kafka-nifi-net
 
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - kafka-nifi-net
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+
+
+
 volumes:
   starrocks_data:
   mysql_data:
+  grafana_data:
 
 networks:
   kafka-nifi-net:
