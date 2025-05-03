@@ -1,21 +1,30 @@
 use industrial_data;
 
-SHOW TABLES
+SHOW TABLES;
+
+DROP TABLE IF EXISTS Machines;
 
 CREATE TABLE Machines (
     MachineID INT PRIMARY KEY,
     MachineName VARCHAR(50) NOT NULL
 );
 
+DROP TABLE IF EXISTS MachineStatus;
+
 CREATE TABLE MachineStatus (
     StatusID INT PRIMARY KEY,
     StatusName VARCHAR(50) NOT NULL
 );
 
+DROP TABLE IF EXISTS AlarmCodes;
+
+
 CREATE TABLE AlarmCodes (
     AlarmID INT PRIMARY KEY,
     AlarmDescription VARCHAR(100) NOT NULL
 );
+
+DROP TABLE IF EXISTS Operators;
 
 
 CREATE TABLE Operators (
@@ -24,7 +33,7 @@ CREATE TABLE Operators (
 
 -- once created the above table will be populated with data from the csv file located in industrial-data-pipeline/sql_csv/metadata
 
-DROP TABLE staging_iot;
+DROP TABLE IF EXISTS staging_iot;
 
 CREATE TABLE staging_iot (
   Timestamp VARCHAR(50),
@@ -34,7 +43,7 @@ CREATE TABLE staging_iot (
   Machine_ID VARCHAR(50)
 );
 
-DROP TABLE staging_mes;
+DROP TABLE IF EXISTS staging_mes;
 
 CREATE TABLE staging_mes (
   Timestamp VARCHAR(50),
@@ -45,7 +54,7 @@ CREATE TABLE staging_mes (
   Machine_ID VARCHAR(50)
 );
 
-DROP TABLE staging_scada;
+DROP TABLE IF EXISTS staging_scada;
 
 CREATE TABLE staging_scada (
   Timestamp VARCHAR(50),

@@ -1,3 +1,15 @@
+SHOW CATALOGS;
+
+SET CATALOG default_catalog;
+
+SHOW DATABASES;
+
+DROP DATABASE IF EXISTS industrial_warehouse;
+
+CREATE DATABASE industrial_warehouse;
+
+use industrial_warehouse;
+
 CREATE TABLE staging_scada_stream (
   Timestamp DATETIME,
   Machine_ID VARCHAR(100),
@@ -11,6 +23,36 @@ DISTRIBUTED BY HASH(Machine_ID) BUCKETS 10
 PROPERTIES (
   "replication_num" = "1"
 );
+
+CREATE TABLE staging_iot_stream (
+  Timestamp DATETIME,
+  Machine_ID VARCHAR(100),
+  Temperature_C DOUBLE,
+  Vibration_mm_s DOUBLE,
+  Pressure_bar DOUBLE
+)
+ENGINE=OLAP
+PRIMARY KEY(Timestamp, Machine_ID)
+DISTRIBUTED BY HASH(Machine_ID) BUCKETS 10
+PROPERTIES (
+  "replication_num" = "1"
+);
+
+CREATE TABLE staging_mes_stream (
+  Timestamp DATETIME,
+  Machine_ID VARCHAR(100),
+  Operator_ID INT,
+  Units_Produced INT,
+  Defective_Units INT,
+  Production_Time_min DOUBLE
+)
+ENGINE=OLAP
+PRIMARY KEY(Timestamp, Machine_ID)
+DISTRIBUTED BY HASH(Machine_ID) BUCKETS 10
+PROPERTIES (
+  "replication_num" = "1"
+);
+
 
 CREATE ROUTINE LOAD industrial_warehouse.load_scada_stream
 ON staging_scada_stream
@@ -57,35 +99,6 @@ FROM KAFKA (
   "kafka_broker_list" = "kafka:9092",
   "kafka_topic" = "mes-data",
   "property.kafka_default_offsets" = "OFFSET_BEGINNING"
-);
-
-CREATE TABLE staging_iot_stream (
-  Timestamp DATETIME,
-  Machine_ID VARCHAR(100),
-  Temperature_C DOUBLE,
-  Vibration_mm_s DOUBLE,
-  Pressure_bar DOUBLE
-)
-ENGINE=OLAP
-PRIMARY KEY(Timestamp, Machine_ID)
-DISTRIBUTED BY HASH(Machine_ID) BUCKETS 10
-PROPERTIES (
-  "replication_num" = "1"
-);
-
-CREATE TABLE staging_mes_stream (
-  Timestamp DATETIME,
-  Machine_ID VARCHAR(100),
-  Operator_ID INT,
-  Units_Produced INT,
-  Defective_Units INT,
-  Production_Time_min DOUBLE
-)
-ENGINE=OLAP
-PRIMARY KEY(Timestamp, Machine_ID)
-DISTRIBUTED BY HASH(Machine_ID) BUCKETS 10
-PROPERTIES (
-  "replication_num" = "1"
 );
 
 

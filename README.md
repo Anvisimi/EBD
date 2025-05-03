@@ -227,7 +227,7 @@ StarRocks setup is also performed using DBeaver:
 
 | Service | URL | Default Credentials |
 |---------|-----|---------------------|
-| Jupyter Notebook | http://localhost:8888 | No token required |
+| Jupyter Notebook | http://localhost:8888 | Requires token from container logs |
 | StarRocks (MySQL client) | localhost:9030 | user: root, no password |
 | MySQL | localhost:3306 | user: root, password: rootpassword |
 | Kafka | localhost:9093 | N/A |
@@ -237,6 +237,22 @@ StarRocks setup is also performed using DBeaver:
 | Node-RED | http://localhost:1880 | N/A |
 | Superset | http://localhost:8088 | user: admin, password: admin |
 | Spark Master UI | http://localhost:8090 | N/A |
+
+#### Accessing Jupyter Notebook
+
+To access Jupyter Notebook, you need to retrieve the access token from the container logs:
+
+```bash
+# Get the Jupyter access token from logs
+docker logs jupyter 2>&1 | grep "token=" | head -n 1
+```
+
+You should see a line similar to:
+```
+[I 2025-05-03 09:32:35.102 ServerApp]     http://127.0.0.1:8888/lab?token=48fa134827581277004576211a3014006878a4680ff16209
+```
+
+Copy the full URL with the token and paste it in your browser, or go to http://localhost:8888 and enter the token when prompted.
 
 ### Data Warehousing Approaches
 
@@ -288,6 +304,33 @@ This approach uses Apache Spark for flexible, scalable data processing:
 
 4. **Implementation**:
    - Available as a Jupyter notebook (`notebooks/mes_streams_creation/machine_metrics.ipynb`)
+   - Also available as a standalone Python script (`scripts/SparkETL.py`) for use without Jupyter
+
+#### Running the Spark ETL Script
+
+For users who prefer to run the ETL process directly without using Jupyter, a standalone Python script is provided:
+
+```bash
+# Connect to the Spark master container
+docker exec -it spark-master bash
+
+# Run the ETL script
+spark-submit /scripts/SparkETL.py
+```
+
+The `SparkETL.py` script performs the same functions as the Jupyter notebook:
+- Connects to StarRocks database
+- Reads data from staging tables
+- Joins IoT data with the closest temporal MES and SCADA data points
+- Resolves references to dimension tables
+- Writes the results to the machine_metrics table
+
+This script can be scheduled to run periodically using cron for automated ETL processing:
+
+```bash
+# Example cron entry to run the ETL process every minute
+* * * * * docker exec spark-master spark-submit /scripts/SparkETL.py >> /var/log/spark-etl.log 2>&1
+```
 
 ### Node-RED OPC UA to Kafka Integration
 

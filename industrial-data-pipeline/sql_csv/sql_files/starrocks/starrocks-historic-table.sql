@@ -1,4 +1,3 @@
-
 SHOW CATALOGS;
 
 SET CATALOG default_catalog;
@@ -6,7 +5,6 @@ SET CATALOG default_catalog;
 SHOW DATABASES;
 
 use industrial_warehouse;
-
 
 SHOW TABLES;
 
