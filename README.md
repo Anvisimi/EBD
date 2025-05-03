@@ -254,6 +254,41 @@ You should see a line similar to:
 
 Copy the full URL with the token and paste it in your browser, or go to http://localhost:8888 and enter the token when prompted.
 
+#### Configuring Apache Superset
+
+After starting Superset with Docker Compose, follow these steps to set up database connections:
+
+1. Access Superset at http://localhost:8088
+   - Username: admin
+   - Password: admin
+
+2. Configure StarRocks connection:
+   - Click on "Settings" (gear icon) in the top menu, then "Database Connections"
+   - Click "+ DATABASE" to add a new database connection
+   - Select "MySQL" as the database type
+   - Enter the following connection details:
+     - Display Name: StarRocks
+     - Host: host.docker.internal
+     - Port: 9030
+     - Database Name: industrial_warehouse
+     - Username: root
+     - Password: (leave empty)
+   - Click "FINISH" to save the connection
+
+3. Configure MySQL connection:
+   - Click "+ DATABASE" to add another database connection
+   - Select "MySQL" as the database type
+   - Enter the following connection details:
+     - Display Name: MySQL
+     - Host: host.docker.internal
+     - Port: 3306
+     - Database Name: industrial_data
+     - Username: root
+     - Password: rootpassword
+   - Click "FINISH" to save the connection
+
+4. Create datasets:
+   - Go to "SQL Lab" → "SQL Editor" to run queries against your databases
 ### Data Warehousing Approaches
 
 The platform implements two complementary approaches for data warehousing:
