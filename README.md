@@ -205,7 +205,7 @@ StarRocks setup is also performed using DBeaver:
      - Upload the `opcua-server/future-stream-mes.csv` file to this bucket
    - Run the MES streams simulation:
      - Access Jupyter at http://localhost:8888
-     - Open the notebook `notebooks/mes_streams_creation/MES_10_streams_per_second.ipynb`
+     - Open the notebook `notebooks/mes_streams_creation/MES_streams_creation.ipynb`
      - Execute the notebook cells to start generating MES data streams to Kafka
      - This will create the `mes-data` topic in Kafka which will be consumed by Telegraf and StarRocks
 
@@ -303,7 +303,7 @@ This approach uses Apache Spark for flexible, scalable data processing:
    - Scheduled to run periodically via cron (e.g., every minute)
 
 4. **Implementation**:
-   - Available as a Jupyter notebook (`notebooks/mes_streams_creation/machine_metrics.ipynb`)
+   - Available as a Jupyter notebook (`notebooks/mes_streams_creation/SparkETL.ipynb`)
    - Also available as a standalone Python script (`scripts/SparkETL.py`) for use without Jupyter
 
 #### Running the Spark ETL Script
