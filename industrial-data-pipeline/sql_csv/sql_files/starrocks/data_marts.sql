@@ -1,3 +1,7 @@
+use industrial_warehouse;
+
+DROP MATERIALIZED VIEW IF EXISTS mv_unit_production_daily;
+
 -- Daily
 CREATE MATERIALIZED VIEW mv_unit_production_daily
 REFRESH ASYNC EVERY (INTERVAL 1 MINUTE)
@@ -14,6 +18,8 @@ SELECT * from mv_unit_production_daily order by Day, Machine_ID;
 
 -- Weekly
 
+DROP MATERIALIZED VIEW IF EXISTS mv_unit_production_weekly;
+
 CREATE MATERIALIZED VIEW mv_unit_production_weekly
 REFRESH ASYNC EVERY (INTERVAL 1 MINUTE)
 AS
@@ -28,6 +34,8 @@ SELECT * from mv_unit_production_weekly order by ISO_Week,Machine_ID;
 
 -- Monthly
 
+DROP MATERIALIZED VIEW IF EXISTS mv_unit_production_monthly;
+
 CREATE MATERIALIZED VIEW mv_unit_production_monthly
 REFRESH ASYNC EVERY (INTERVAL 1 MINUTE)
 AS
@@ -40,10 +48,14 @@ GROUP BY Machine_ID, Month;
 
 SELECT * from mv_unit_production_monthly order by Month,Machine_ID;
 
-Machine Failures
+-- Machine Failures
 
 
 -- Daily
+
+DROP MATERIALIZED VIEW IF EXISTS mv_machine_failures_daily;
+
+
 CREATE MATERIALIZED VIEW mv_machine_failures_daily
 REFRESH ASYNC EVERY (INTERVAL 1 MINUTE)
 AS
@@ -62,6 +74,9 @@ SELECT * from mv_machine_failures_daily order by Day, Machine_ID;
 
 
 -- Weekly
+
+
+DROP MATERIALIZED VIEW IF EXISTS mv_machine_failures_weekly;
 
 CREATE MATERIALIZED VIEW mv_machine_failures_weekly
 REFRESH ASYNC EVERY (INTERVAL 1 MINUTE)
@@ -82,6 +97,8 @@ SELECT * from mv_machine_failures_weekly order by ISO_Week, Machine_ID;
 
 -- Monthly
 
+DROP MATERIALIZED VIEW IF EXISTS  mv_machine_failures_monthly;
+
 CREATE MATERIALIZED VIEW mv_machine_failures_monthly
 REFRESH ASYNC EVERY (INTERVAL 1 MINUTE)
 AS
@@ -99,9 +116,11 @@ GROUP BY Machine_ID, Month;
 SELECT * from mv_machine_failures_monthly order by Month, Machine_ID;
 
 
-Machine Efficiency
+-- Machine Efficiency
 
 -- Daily
+
+DROP MATERIALIZED VIEW IF EXISTS  mv_machine_efficiency_daily;
 
 CREATE MATERIALIZED VIEW mv_machine_efficiency_daily
 REFRESH ASYNC EVERY (INTERVAL 1 MINUTE)
@@ -117,6 +136,8 @@ select * from mv_machine_efficiency_daily order by Day, Machine_ID;
 
 -- Weekly
 
+DROP MATERIALIZED VIEW IF EXISTS  mv_machine_efficiency_weekly;
+
 CREATE MATERIALIZED VIEW mv_machine_efficiency_weekly
 REFRESH ASYNC EVERY (INTERVAL 1 MINUTE)
 AS
@@ -131,6 +152,8 @@ select * from mv_machine_efficiency_weekly order by ISO_Week, Machine_ID;
 
 -- Monthly
 
+DROP MATERIALIZED VIEW IF EXISTS  mv_machine_efficiency_monthly;
+
 CREATE MATERIALIZED VIEW mv_machine_efficiency_monthly
 REFRESH ASYNC EVERY (INTERVAL 1 MINUTE)
 AS
@@ -144,10 +167,13 @@ GROUP BY Machine_ID, Month;
 select * from mv_machine_efficiency_monthly order by Month, Machine_ID;
 
 
-Power Consumption per Machine
+-- Power Consumption per Machine
 
 
 -- Daily
+
+DROP MATERIALIZED VIEW IF EXISTS  mv_power_consumption_daily;
+
 CREATE MATERIALIZED VIEW mv_power_consumption_daily
 REFRESH ASYNC EVERY (INTERVAL 1 MINUTE)
 AS
@@ -161,7 +187,9 @@ GROUP BY Machine_ID, Day;
 select * from mv_power_consumption_daily order by Day, Machine_ID;
 
 
--- Weekly 
+-- Weekly
+
+DROP MATERIALIZED VIEW IF EXISTS  mv_power_consumption_weekly;
 
 CREATE MATERIALIZED VIEW mv_power_consumption_weekly
 REFRESH ASYNC EVERY (INTERVAL 1 MINUTE)
@@ -175,7 +203,9 @@ GROUP BY Machine_ID, ISO_Week;
 
 select * from mv_power_consumption_weekly order by ISO_Week, Machine_ID;
 
--- Monthly 
+-- Monthly
+
+DROP MATERIALIZED VIEW IF EXISTS  mv_power_consumption_monthly;
 
 CREATE MATERIALIZED VIEW mv_power_consumption_monthly
 REFRESH ASYNC EVERY (INTERVAL 1 MINUTE)
@@ -192,6 +222,8 @@ select * from mv_power_consumption_monthly order by Month, Machine_ID;
 
 -- Total Plant Daily consumption
 
+DROP MATERIALIZED VIEW IF EXISTS  mv_total_power_consumption_daily;
+
 CREATE MATERIALIZED VIEW mv_total_power_consumption_daily
 REFRESH ASYNC EVERY (INTERVAL 1 MINUTE)
 AS
@@ -205,6 +237,8 @@ select * from mv_total_power_consumption_daily order by Day;
 
 -- Total Plant Weekly consumption
 
+DROP MATERIALIZED VIEW IF EXISTS  mv_total_power_consumption_weekly;
+
 CREATE MATERIALIZED VIEW mv_total_power_consumption_weekly
 REFRESH ASYNC EVERY (INTERVAL 1 MINUTE)
 AS
@@ -217,6 +251,8 @@ GROUP BY ISO_Week;
 select * from mv_total_power_consumption_weekly order by ISO_Week;
 
 -- Total Plant Monthly consumption
+
+DROP MATERIALIZED VIEW IF EXISTS  mv_total_power_consumption_monthly;
 
 CREATE MATERIALIZED VIEW mv_total_power_consumption_monthly
 REFRESH ASYNC EVERY (INTERVAL 1 MINUTE)

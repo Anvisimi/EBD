@@ -1,4 +1,6 @@
-DROP TABLE IOT;
+use industrial_data;
+
+DROP TABLE IF EXISTS  IOT;
 
 CREATE TABLE IOT (
   Timestamp VARCHAR(50),
@@ -11,7 +13,7 @@ CREATE TABLE IOT (
 
 
 INSERT INTO IOT (Timestamp, Temperature_C, Vibration_mm_s, Pressure_bar, MachineID)
-SELECT 
+SELECT
   s.Timestamp,
   s.Temperature_C,
   s.Vibration_mm_s,
@@ -20,9 +22,8 @@ SELECT
 FROM staging_iot s
 JOIN Machines m ON s.Machine_ID = m.MachineName;
 
-SELECT count(*) from IOT;
 
-DROP TABLE synthetic_mes_data;
+DROP TABLE IF EXISTS  synthetic_mes_data;
 
 CREATE TABLE synthetic_mes_data (
   Timestamp VARCHAR(50),
@@ -39,7 +40,7 @@ CREATE TABLE synthetic_mes_data (
 INSERT INTO synthetic_mes_data (
   Timestamp, Operator_ID, Units_Produced, Defective_Units, Production_Time_min, MachineID
 )
-SELECT 
+SELECT
   s.Timestamp,
   o.OperatorID,
   s.Units_Produced,
@@ -50,9 +51,8 @@ FROM staging_mes s
 JOIN Operators o ON s.Operator_ID  = o.OperatorID
 JOIN Machines m ON s.Machine_ID  = m.MachineName;
 
-select count(*) from synthetic_mes_data
 
-DROP TABLE synthetic_scada_data
+DROP TABLE IF EXISTS  synthetic_scada_data;
 
 CREATE TABLE synthetic_scada_data (
   Timestamp VARCHAR(50),
@@ -68,7 +68,7 @@ CREATE TABLE synthetic_scada_data (
 INSERT INTO synthetic_scada_data (
   Timestamp, Power_Consumption_kW, MachineID, ALARM_CODE_ID, Machine_Status_ID
 )
-SELECT 
+SELECT
 
   s.Timestamp,
   s.Power_Consumption_kW,
@@ -79,5 +79,3 @@ FROM staging_scada s
 JOIN Machines m ON s.Machine_ID = m.MachineName
 JOIN AlarmCodes a ON s.Alarm_Code = a.AlarmDescription
 JOIN MachineStatus ms ON s.Machine_Status = ms.StatusName;
-
-select count(*) from synthetic_scada_data ssd ;

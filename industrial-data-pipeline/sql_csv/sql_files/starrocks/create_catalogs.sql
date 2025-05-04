@@ -1,3 +1,5 @@
+DROP CATALOG IF EXISTS mysql_catalog;
+
 CREATE EXTERNAL CATALOG mysql_catalog
 PROPERTIES (
     "type" = "jdbc",

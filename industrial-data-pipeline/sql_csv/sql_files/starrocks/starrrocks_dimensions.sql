@@ -1,5 +1,9 @@
 SET CATALOG default_catalog;
 
+DROP DATABASE IF EXISTS industrial_warehouse;
+
+CREATE DATABASE industrial_warehouse;
+
 use industrial_warehouse;
 
 CREATE TABLE AlarmCodes (

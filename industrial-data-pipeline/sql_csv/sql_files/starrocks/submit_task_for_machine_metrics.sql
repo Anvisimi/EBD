@@ -1,3 +1,8 @@
+SELECT * FROM information_schema.tasks WHERE task_name = 'insert_machine_metrics';
+
+-- only run DROP TASK if the task exists, else below drop task gives error
+DROP TASK insert_machine_metrics;
+
 SUBMIT TASK insert_machine_metrics
 SCHEDULE EVERY(INTERVAL 1 MINUTE)
 AS

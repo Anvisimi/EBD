@@ -95,16 +95,16 @@ Users can implement either approach based on their requirements, existing skill 
 5. Create Kafka topics with the optimal partitioning strategy:
    ```bash
    # Create the IoT data topic with 4 partitions
-   docker exec -it kafka kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 4 --topic iot-data
+   docker exec -it kafka kafka-topics --create --bootstrap-server kafka:9092 --replication-factor 1 --partitions 4 --topic iot-data
    
    # Create the SCADA data topic with 2 partitions
-   docker exec -it kafka kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 2 --topic scada-data
+   docker exec -it kafka kafka-topics --create --bootstrap-server kafka:9092 --replication-factor 1 --partitions 2 --topic scada-data
    
    # Create the MES data topic with 1 partition
-   docker exec -it kafka kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic mes-data
+   docker exec -it kafka kafka-topics --create --bootstrap-server kafka:9092 --replication-factor 1 --partitions 1 --topic mes-data
    
    # Verify the topics were created
-   docker exec -it kafka kafka-topics --list --bootstrap-server localhost:9092
+   docker exec -it kafka kafka-topics --list --bootstrap-server kafka:9092
    ```
 
 ### Database Setup and Data Loading
@@ -125,7 +125,7 @@ MySQL database setup is performed using DBeaver. Follow these steps:
    - Name it `industrial_data` and click OK
    - Select the new database in the navigation tree
 
-3. Create dimension and staging tables:
+3. Create metadata and staging tables:
    - Navigate to `sql_csv/sql_files/mysql/initial_data_load.sql` in the project
    - Open the file in DBeaver
    - Execute the script by clicking the "Execute SQL Script" button (or press Ctrl+Enter)
@@ -212,13 +212,13 @@ StarRocks setup is also performed using DBeaver:
    - Verify all data streams are flowing to Kafka:
      ```bash
      # Check IOT data stream
-     docker exec -it kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic iot-data --from-beginning
+     docker exec -it kafka kafka-console-consumer --bootstrap-server kafka:9092 --topic iot-data --from-beginning
      
      # Check SCADA data stream
-     docker exec -it kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic scada-data --from-beginning
+     docker exec -it kafka kafka-console-consumer --bootstrap-server kafka:9092 --topic scada-data --from-beginning
      
      # Check MES data stream
-     docker exec -it kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic mes-data --from-beginning
+     docker exec -it kafka kafka-console-consumer --bootstrap-server kafka:9092 --topic mes-data --from-beginning
      ```
 
 ## Usage

@@ -8,7 +8,7 @@ use industrial_warehouse;
 
 SHOW TABLES;
 
-drop table machine_metrics;
+DROP TABLE IF EXISTS machine_metrics;
 
 -- final machine metrics table
 

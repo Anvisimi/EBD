@@ -4,10 +4,6 @@ SET CATALOG default_catalog;
 
 SHOW DATABASES;
 
-DROP DATABASE IF EXISTS industrial_warehouse;
-
-CREATE DATABASE industrial_warehouse;
-
 use industrial_warehouse;
 
 CREATE TABLE staging_scada_stream (
